@@ -12,4 +12,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('orders', OrderController::class);
 Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus']);
 
-Route::post('send-email', [EmailController::class, 'sendEmail']);
+Route::post('emails', [EmailController::class, 'sendEmail']);

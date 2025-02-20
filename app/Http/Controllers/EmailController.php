@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Mail\GenericMail;
+use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
