@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
-*/
     public function index()
     {
-        return response()->json(Order::all(), Response::HTTP_OK);
+        return response()->json(['data' => Order::orderBy('id', 'desc')->get()], Response::HTTP_OK);
     }
 
     /**
@@ -29,7 +29,7 @@ class OrderController extends Controller
 
         $order = Order::create($validated);
 
-        return response()->json($order, Response::HTTP_CREATED);
+        return response()->json(['data' => $order], Response::HTTP_CREATED);
     }
 
     /**
@@ -37,7 +37,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return response()->json($order, Response::HTTP_OK);
+        return response()->json(['data' => $order], Response::HTTP_OK);
     }
 
     /**
@@ -56,7 +56,7 @@ class OrderController extends Controller
 
         $order->update($validated);
 
-        return response()->json($order, Response::HTTP_OK);
+        return response()->json(['data' => $order], Response::HTTP_OK);
     }
 
     /**
@@ -80,6 +80,6 @@ class OrderController extends Controller
 
         $order->update(['status' => $validated['status']]);
 
-        return response()->json($order, Response::HTTP_OK);
+        return response()->json(['data' => $order], Response::HTTP_OK);
     }
 }
